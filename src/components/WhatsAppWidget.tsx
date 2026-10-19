@@ -166,7 +166,7 @@ export const WhatsAppWidget: React.FC = () => {
                   type="text"
                   value={customNumber}
                   onChange={(e) => setCustomNumber(e.target.value)}
-                  placeholder="e.g. +91 98765 43210"
+                  placeholder="e.g. +91 82384 11909"
                   className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
                 />
                 <div className="flex items-center gap-2">
