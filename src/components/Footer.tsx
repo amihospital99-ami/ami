@@ -6,12 +6,14 @@ interface FooterProps {
   onOpenBooking: () => void;
   onOpenCloudflare: () => void;
   onOpenSupabase?: () => void;
+  onOpenAdmin?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenBooking,
   onOpenCloudflare,
   onOpenSupabase,
+  onOpenAdmin,
 }) => {
   return (
     <footer className="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
@@ -142,6 +144,16 @@ export const Footer: React.FC<FooterProps> = ({
             >
               Book Priority OPD Slot
             </button>
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-teal-400 hover:text-teal-300 border border-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer"
+                title="Admin Portal - Sign up or Login to view bookings"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                <span>Admin Login / Sign-up</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -150,7 +162,20 @@ export const Footer: React.FC<FooterProps> = ({
           <p>
             © 2026 Ami Hospital. All rights reserved. The medical information on this website is vetted by senior proctologists and intended for educational & appointment booking purposes.
           </p>
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0 flex-wrap justify-center md:justify-end">
+            {onOpenAdmin && (
+              <>
+                <button
+                  onClick={onOpenAdmin}
+                  className="text-slate-400 hover:text-teal-400 transition font-bold flex items-center gap-1.5 cursor-pointer"
+                  title="Admin Portal - Sign up or Login"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                  <span>Admin Sign-up / Login</span>
+                </button>
+                <span>•</span>
+              </>
+            )}
             {onOpenSupabase && (
               <>
                 <button

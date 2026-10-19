@@ -109,7 +109,41 @@ export async function fetchRecentAppointments(): Promise<any[]> {
   }
 }
 
+export async function updateAppointmentStatus(
+  refOrId: string,
+  newStatus: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    // 1. Update in Supabase
+    const { error } = await supabase
+      .from('appointments')
+      .update({ status: newStatus })
+      .or(`reference_id.eq.${refOrId},id.eq.${refOrId}`);
+
+    if (error) {
+      console.warn('Supabase status update error:', error.message);
+    }
+
+    // 2. Also update in local storage backup
+    if (typeof window !== 'undefined') {
+      const existing = JSON.parse(localStorage.getItem('ami_local_appointments') || '[]');
+      const updated = existing.map((item: any) =>
+        item.reference_id === refOrId || item.id === refOrId
+          ? { ...item, status: newStatus }
+          : item
+      );
+      localStorage.setItem('ami_local_appointments', JSON.stringify(updated));
+    }
+
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, error: err?.message };
+  }
+}
+
 export const SUPABASE_SETUP_SQL = `-- Run this in your Supabase SQL Editor (https://supabase.com/dashboard/project/rrnffijgokezhtqfhblv/sql)
+
+-- 1. Create appointments table
 create table if not exists public.appointments (
   id uuid default gen_random_uuid() primary key,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null,
@@ -126,18 +160,39 @@ create table if not exists public.appointments (
   source text default 'website_form'
 );
 
--- Enable Row Level Security (RLS)
+-- Enable Row Level Security (RLS) for appointments
 alter table public.appointments enable row level security;
 
--- Allow public / anonymous visitors to submit appointment bookings
 create policy "Allow anonymous appointment booking"
   on public.appointments
   for insert
   with check (true);
 
--- Allow reading appointments
 create policy "Allow reading appointments"
   on public.appointments
   for select
   using (true);
+
+create policy "Allow updating appointment status"
+  on public.appointments
+  for update
+  using (true);
+
+-- 2. Create single-slot admin users table
+create table if not exists public.admin_users (
+  id text primary key,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  name text not null,
+  email text unique not null,
+  password_hash text not null,
+  role text default 'hospital_admin'
+);
+
+alter table public.admin_users enable row level security;
+
+create policy "Allow admin account registration and login"
+  on public.admin_users
+  for all
+  using (true)
+  with check (true);
 `;

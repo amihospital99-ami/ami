@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { CloudflareModal } from './components/CloudflareModal';
 import { SupabaseModal } from './components/SupabaseModal';
+import { AdminPanelModal } from './components/AdminPanelModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Phone, MessageSquare, Calendar, Download, Database } from 'lucide-react';
 import { HOSPITAL_INFO } from './data/hospitalData';
@@ -26,6 +27,7 @@ export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isCloudflareOpen, setIsCloudflareOpen] = useState(false);
   const [isSupabaseOpen, setIsSupabaseOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [selectedCondition, setSelectedCondition] = useState('Laser Piles Surgery (LHP)');
 
   const handleOpenBookingWithCondition = (conditionName: string) => {
@@ -39,7 +41,6 @@ export default function App() {
       <Navbar
         onOpenBooking={() => setIsBookingOpen(true)}
         onOpenCloudflare={() => setIsCloudflareOpen(true)}
-        onOpenSupabase={() => setIsSupabaseOpen(true)}
       />
 
       {/* Main Page Sections */}
@@ -77,6 +78,7 @@ export default function App() {
         onOpenBooking={() => setIsBookingOpen(true)}
         onOpenCloudflare={() => setIsCloudflareOpen(true)}
         onOpenSupabase={() => setIsSupabaseOpen(true)}
+        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Interactive Modals */}
@@ -84,6 +86,11 @@ export default function App() {
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
         initialCondition={selectedCondition}
+      />
+
+      <AdminPanelModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
       />
 
       <CloudflareModal
