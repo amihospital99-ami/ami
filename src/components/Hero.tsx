@@ -6,7 +6,7 @@ import { saveAppointmentToSupabase } from '../utils/supabase';
 
 interface HeroProps {
   onOpenBooking: () => void;
-  onOpenCloudflare: () => void;
+  onOpenCloudflare?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {

@@ -1,46 +1,22 @@
 import React from 'react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
-import { Phone, Mail, MapPin, Download, ShieldCheck, Heart, Cloud, Database } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Heart, Database } from 'lucide-react';
 
 interface FooterProps {
   onOpenBooking: () => void;
-  onOpenCloudflare: () => void;
+  onOpenCloudflare?: () => void;
   onOpenSupabase?: () => void;
   onOpenAdmin?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenBooking,
-  onOpenCloudflare,
   onOpenSupabase,
   onOpenAdmin,
 }) => {
   return (
     <footer className="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Cloudflare Notice Banner */}
-        <div className="mb-12 p-5 rounded-2xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-amber-950/70 border border-amber-600/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3 text-center sm:text-left">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
-              <Cloud className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                Cloudflare Pages Deployment Ready
-              </span>
-              <p className="text-xs text-slate-300">
-                Need to deploy this Ami Hospital site to your Cloudflare account? Download the standalone pre-packaged ZIP file.
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={onOpenCloudflare}
-            className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow-md transition flex items-center gap-2 shrink-0 cursor-pointer active:scale-95"
-          >
-            <Download className="w-4 h-4" />
-            <span>Get Cloudflare Pages ZIP</span>
-          </button>
-        </div>
 
         {/* 4 Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800 text-xs">
@@ -192,14 +168,6 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>•</span>
               </>
             )}
-            <button
-              onClick={onOpenCloudflare}
-              className="hover:text-amber-400 transition font-bold flex items-center gap-1"
-            >
-              <Cloud className="w-3 h-3 text-amber-400" />
-              <span>Cloudflare ZIP</span>
-            </button>
-            <span>•</span>
             <span className="flex items-center gap-1 text-teal-400">
               <ShieldCheck className="w-3.5 h-3.5" />
               NABH & ISO Standard Compliant

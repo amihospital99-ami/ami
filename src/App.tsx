@@ -19,7 +19,7 @@ import { CloudflareModal } from './components/CloudflareModal';
 import { SupabaseModal } from './components/SupabaseModal';
 import { AdminPanelModal } from './components/AdminPanelModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
-import { Phone, MessageSquare, Calendar, Download, Database } from 'lucide-react';
+import { Phone, MessageSquare, Calendar, Database } from 'lucide-react';
 import { HOSPITAL_INFO } from './data/hospitalData';
 import { openWhatsApp, WHATSAPP_MESSAGES } from './utils/whatsapp';
 
@@ -40,7 +40,6 @@ export default function App() {
       {/* Navigation */}
       <Navbar
         onOpenBooking={() => setIsBookingOpen(true)}
-        onOpenCloudflare={() => setIsCloudflareOpen(true)}
       />
 
       {/* Main Page Sections */}
@@ -48,7 +47,6 @@ export default function App() {
         {/* Hero with direct appointment lead card */}
         <Hero
           onOpenBooking={() => setIsBookingOpen(true)}
-          onOpenCloudflare={() => setIsCloudflareOpen(true)}
         />
 
         {/* Specialized Laser Procedures */}
@@ -76,7 +74,6 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenBooking={() => setIsBookingOpen(true)}
-        onOpenCloudflare={() => setIsCloudflareOpen(true)}
         onOpenSupabase={() => setIsSupabaseOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
@@ -128,18 +125,6 @@ export default function App() {
         >
           <Calendar className="w-3.5 h-3.5" />
           <span>Book Free</span>
-        </button>
-      </div>
-
-      {/* Floating Cloudflare ZIP Quick Button on Bottom Right for Desktop */}
-      <div className="hidden lg:block fixed bottom-6 right-6 z-40">
-        <button
-          onClick={() => setIsCloudflareOpen(true)}
-          className="group flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-900/90 hover:bg-slate-900 text-white text-xs font-bold shadow-xl border border-slate-700 backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-          <Download className="w-4 h-4 text-amber-400 group-hover:translate-y-0.5 transition-transform" />
-          <span>Download Cloudflare ZIP</span>
         </button>
       </div>
     </div>
