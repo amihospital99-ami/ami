@@ -2,7 +2,7 @@ import { Treatment, Doctor, Testimonial, FaqItem } from '../types';
 
 export const HOSPITAL_INFO = {
   name: 'Ami Hospital',
-  legalName: 'Ami Super Speciality Laser Proctology Hospital',
+  legalName: 'Ami Laser Proctology Hospital',
   tagline: 'Painless Laser Cure for Piles, Fissure & Fistula',
   phone: '+91 82384 11909',
   emergencyPhone: '+91 82384 11909',
@@ -10,11 +10,10 @@ export const HOSPITAL_INFO = {
   email: 'amihospital99@gmail.com',
   address: 'Near Bus Station, Padra Road, Samiyala, Vadodara. 391410',
   city: 'Vadodara, Gujarat',
-  timings: 'OPD: 8:00 AM - 9:00 PM (Emergency 24x7)',
+  timings: 'OPD: 10:00 AM - 8:00 PM (Emergency 24x7)',
   branches: [
-    { name: 'Ami Hospital - Main Center (Samiyala, Vadodara)', phone: '+91 82384 11909' },
-    { name: 'Ami Proctology Clinic - Padra Road, Vadodara', phone: '+91 82384 11909' },
-    { name: 'Ami Day-Care Surgical Wing - Vadodara', phone: '+91 82384 11909' },
+    { name: 'Ami Hospital - Padra Road, Samiyala, Vadodara)', phone: '+91 82384 11909' },
+    { name: 'Ami Clinic - Bill Road, Vadodara', phone: '+91 82384 11909' },
   ],
   stats: {
     patientsTreated: '15,000+',
