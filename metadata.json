@@ -1,0 +1,8 @@
+{
+  "name": "Ami Hospital - Laser Piles & Proctology Center",
+  "description": "Ami Hospital offers advanced, painless laser treatments for Piles, Fissure, Fistula, and Pilonidal Sinus with same-day discharge, 24/7 care, and expert surgeons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
