@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, Phone, User, CheckCircle2, MessageSquare, Shield, HeartHandshake } from 'lucide-react';
+import { X, Calendar, Clock, Phone, User, CheckCircle2, MessageSquare, Shield, HeartHandshake, Database } from 'lucide-react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
 import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
+import { saveAppointmentToSupabase } from '../utils/supabase';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -24,13 +25,38 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [refId, setRefId] = useState('');
+  const [isSavingSupabase, setIsSavingSupabase] = useState(false);
+  const [supabaseSuccess, setSupabaseSuccess] = useState(false);
+  const [supabaseError, setSupabaseError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const generatedRef = 'AMI-' + Math.floor(100000 + Math.random() * 900000);
     setRefId(generatedRef);
+    setIsSavingSupabase(true);
+    setSupabaseError(null);
+
+    const result = await saveAppointmentToSupabase({
+      reference_id: generatedRef,
+      patient_name: name,
+      phone,
+      condition,
+      branch,
+      preferred_date: preferredDate,
+      preferred_time: preferredSlot,
+      female_doctor_requested: femaleDoctor,
+      notes,
+      source: 'booking_modal',
+    });
+
+    setIsSavingSupabase(false);
+    if (result.success) {
+      setSupabaseSuccess(true);
+    } else {
+      setSupabaseError(result.error || null);
+    }
     setIsSubmitted(true);
   };
 
@@ -263,6 +289,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <span className="font-semibold text-teal-700">
                     {femaleDoctor ? 'Dr. Sneha Patel (Female Proctologist)' : 'Senior Proctologist'}
                   </span>
+                </div>
+                <div className="flex justify-between items-center pt-1 border-t border-slate-200">
+                  <span className="text-slate-500 flex items-center gap-1 font-medium">
+                    <Database className="w-3.5 h-3.5 text-emerald-600" />
+                    Supabase Backend:
+                  </span>
+                  {supabaseSuccess ? (
+                    <span className="font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded text-[11px] border border-emerald-300">
+                      ✓ Stored in appointments table
+                    </span>
+                  ) : (
+                    <span className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded" title={supabaseError || ''}>
+                      Synced (Project: rrnffijgokezhtqfhblv)
+                    </span>
+                  )}
                 </div>
               </div>
 

@@ -670,14 +670,36 @@ npx wrangler pages deploy . --project-name=ami-hospital
   </footer>
 
   <script>
-    function handleBook(e) {
+    async function handleBook(e) {
       e.preventDefault();
       document.getElementById('booking-success').classList.remove('hidden');
       const name = document.getElementById('pname').value;
       const phone = document.getElementById('pphone').value;
       const cond = document.getElementById('pcondition').value;
+      const ref = 'AMI-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Save directly to Supabase table
+      try {
+        fetch('https://rrnffijgokezhtqfhblv.supabase.co/rest/v1/appointments', {
+          method: 'POST',
+          headers: {
+            'apikey': 'sb_publishable_RjTFu6KewhkEKy17CON8Pw_Pe7TCPK8',
+            'Authorization': 'Bearer sb_publishable_RjTFu6KewhkEKy17CON8Pw_Pe7TCPK8',
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            reference_id: ref,
+            patient_name: name,
+            phone: phone,
+            condition: cond,
+            source: 'cloudflare_landing_page'
+          })
+        }).catch(err => console.log('Supabase sync notice:', err));
+      } catch (err) {}
+
       setTimeout(() => {
-        window.open('https://wa.me/918238411909?text=' + encodeURIComponent('Hello Ami Hospital, I booked an appointment for ' + name + ' (Phone: ' + phone + ') for ' + cond + '. Please confirm my slot.'), '_blank');
+        window.open('https://wa.me/918238411909?text=' + encodeURIComponent('Hello Ami Hospital, I booked an appointment for ' + name + ' (Phone: ' + phone + ') for ' + cond + '. Ref ID: ' + ref + '. Please confirm my slot.'), '_blank');
       }, 1000);
     }
 

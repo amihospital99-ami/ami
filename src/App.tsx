@@ -16,14 +16,16 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { CloudflareModal } from './components/CloudflareModal';
+import { SupabaseModal } from './components/SupabaseModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
-import { Phone, MessageSquare, Calendar, Download } from 'lucide-react';
+import { Phone, MessageSquare, Calendar, Download, Database } from 'lucide-react';
 import { HOSPITAL_INFO } from './data/hospitalData';
 import { openWhatsApp, WHATSAPP_MESSAGES } from './utils/whatsapp';
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isCloudflareOpen, setIsCloudflareOpen] = useState(false);
+  const [isSupabaseOpen, setIsSupabaseOpen] = useState(false);
   const [selectedCondition, setSelectedCondition] = useState('Laser Piles Surgery (LHP)');
 
   const handleOpenBookingWithCondition = (conditionName: string) => {
@@ -37,6 +39,7 @@ export default function App() {
       <Navbar
         onOpenBooking={() => setIsBookingOpen(true)}
         onOpenCloudflare={() => setIsCloudflareOpen(true)}
+        onOpenSupabase={() => setIsSupabaseOpen(true)}
       />
 
       {/* Main Page Sections */}
@@ -73,6 +76,7 @@ export default function App() {
       <Footer
         onOpenBooking={() => setIsBookingOpen(true)}
         onOpenCloudflare={() => setIsCloudflareOpen(true)}
+        onOpenSupabase={() => setIsSupabaseOpen(true)}
       />
 
       {/* Interactive Modals */}
@@ -85,6 +89,11 @@ export default function App() {
       <CloudflareModal
         isOpen={isCloudflareOpen}
         onClose={() => setIsCloudflareOpen(false)}
+      />
+
+      <SupabaseModal
+        isOpen={isSupabaseOpen}
+        onClose={() => setIsSupabaseOpen(false)}
       />
 
       {/* Floating Interactive WhatsApp Chat Widget */}

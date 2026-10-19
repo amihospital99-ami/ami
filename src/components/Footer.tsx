@@ -1,13 +1,18 @@
 import React from 'react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
-import { Phone, Mail, MapPin, Download, ShieldCheck, Heart, Cloud } from 'lucide-react';
+import { Phone, Mail, MapPin, Download, ShieldCheck, Heart, Cloud, Database } from 'lucide-react';
 
 interface FooterProps {
   onOpenBooking: () => void;
   onOpenCloudflare: () => void;
+  onOpenSupabase?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenCloudflare }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onOpenBooking,
+  onOpenCloudflare,
+  onOpenSupabase,
+}) => {
   return (
     <footer className="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,6 +151,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenCloudflare 
             © 2026 Ami Hospital. All rights reserved. The medical information on this website is vetted by senior proctologists and intended for educational & appointment booking purposes.
           </p>
           <div className="flex items-center gap-4 shrink-0">
+            {onOpenSupabase && (
+              <>
+                <button
+                  onClick={onOpenSupabase}
+                  className="hover:text-emerald-400 transition font-bold flex items-center gap-1 cursor-pointer"
+                >
+                  <Database className="w-3 h-3 text-emerald-400" />
+                  <span>Supabase Backend</span>
+                </button>
+                <span>•</span>
+              </>
+            )}
             <button
               onClick={onOpenCloudflare}
               className="hover:text-amber-400 transition font-bold flex items-center gap-1"
