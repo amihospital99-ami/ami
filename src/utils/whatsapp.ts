@@ -5,7 +5,7 @@ const WHATSAPP_STORAGE_KEY = 'ami_hospital_whatsapp_number';
 export function getWhatsAppNumber(): string {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem(WHATSAPP_STORAGE_KEY);
-    if (saved && saved.trim().length >= 7) {
+    if (saved && saved.trim().length >= 7 && !saved.includes('9876543210')) {
       return saved.trim();
     }
   }

@@ -102,7 +102,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <div class="flex items-center gap-2">
         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">24x7 Helpline</span>
-        <span>Emergency & Free Consultation: <strong>+91 98765 43210</strong></span>
+        <span>Emergency & Free Consultation: <strong>+91 82384 11909</strong></span>
       </div>
       <div class="flex items-center gap-4 text-slate-300">
         <span>⭐ 4.9/5 Rating (15,000+ Cured)</span>
@@ -133,10 +133,10 @@ npx wrangler pages deploy . --project-name=ami-hospital
         <a href="#faq" class="hover:text-teal-600 transition">FAQ</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="https://wa.me/919876543210?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20laser%20piles%20treatment." target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition">
+        <a href="https://wa.me/918238411909?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20laser%20piles%20treatment." target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition">
           💬 WhatsApp Doctor
         </a>
-        <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50 transition">
+        <a href="tel:+918238411909" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50 transition">
           📞 Call Doctor
         </a>
         <a href="#book" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold shadow-md shadow-teal-600/20 transition transform active:scale-95">
@@ -188,7 +188,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
             <a href="#book" class="px-7 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-base shadow-lg shadow-teal-600/30 transition transform active:scale-95">
               Book Free Consultation
             </a>
-            <a href="https://wa.me/919876543210?text=Hi%20Ami%20Hospital,%20I%20would%20like%20to%20inquire%20about%20painless%20laser%20treatment." target="_blank" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
+            <a href="https://wa.me/918238411909?text=Hi%20Ami%20Hospital,%20I%20would%20like%20to%20inquire%20about%20painless%20laser%20treatment." target="_blank" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
               <span>💬 Chat on WhatsApp</span>
             </a>
           </div>
@@ -211,7 +211,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number (For OTP / Confirmation)</label>
-                <input required type="tel" id="pphone" placeholder="+91 98765 xxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input required type="tel" id="pphone" placeholder="+91 82384 xxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
@@ -629,7 +629,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
           </p>
           <div class="mt-4 text-xs text-slate-300 space-y-1">
             <p>📍 Plot 42, Health City Avenue, Sector 12</p>
-            <p>📞 Helpline: +91 98765 43210</p>
+            <p>📞 Helpline: +91 82384 11909</p>
             <p>✉️ care@amihospital.com</p>
           </div>
         </div>
@@ -656,8 +656,8 @@ npx wrangler pages deploy . --project-name=ami-hospital
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Emergency & Appointments</h4>
           <p class="text-xs text-slate-400 mb-3">Our medical team is available 24x7 for emergencies and same-day consultations.</p>
-          <a href="tel:+919876543210" class="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">
-            Call +91 98765 43210
+          <a href="tel:+918238411909" class="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">
+            Call +91 82384 11909
           </a>
           <p class="text-[11px] text-slate-500 mt-2 text-center">OPD: 8 AM - 9 PM | Emergency: 24 Hours</p>
         </div>
@@ -677,7 +677,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
       const phone = document.getElementById('pphone').value;
       const cond = document.getElementById('pcondition').value;
       setTimeout(() => {
-        window.open('https://wa.me/919876543210?text=' + encodeURIComponent('Hello Ami Hospital, I booked an appointment for ' + name + ' (Phone: ' + phone + ') for ' + cond + '. Please confirm my slot.'), '_blank');
+        window.open('https://wa.me/918238411909?text=' + encodeURIComponent('Hello Ami Hospital, I booked an appointment for ' + name + ' (Phone: ' + phone + ') for ' + cond + '. Please confirm my slot.'), '_blank');
       }, 1000);
     }
 
@@ -704,7 +704,7 @@ npx wrangler pages deploy . --project-name=ami-hospital
 
   <!-- Floating WhatsApp Chat Widget -->
   <div class="fixed bottom-6 left-6 z-50">
-    <a href="https://wa.me/919876543210?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20painless%20piles%20laser%20treatment." target="_blank" class="flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3.5 rounded-full shadow-2xl transition transform hover:scale-105 active:scale-95 font-bold text-xs border-2 border-white/80">
+    <a href="https://wa.me/918238411909?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20painless%20piles%20laser%20treatment." target="_blank" class="flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3.5 rounded-full shadow-2xl transition transform hover:scale-105 active:scale-95 font-bold text-xs border-2 border-white/80">
       <span class="w-2.5 h-2.5 rounded-full bg-emerald-200 animate-ping"></span>
       <span>💬 WhatsApp Doctor (Online)</span>
     </a>
