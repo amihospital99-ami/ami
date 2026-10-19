@@ -20,7 +20,7 @@ export function saveWhatsAppNumber(num: string): void {
 
 export function cleanPhoneNumber(raw: string): string {
   let cleaned = raw.replace(/[^0-9]/g, '');
-  // If user enters 10 digits without country code in India (e.g. 9876543210), prefix 91
+  // If user enters 10 digits without country code in India (e.g. 8238411909), prefix 91
   if (cleaned.length === 10) {
     cleaned = '91' + cleaned;
   }
