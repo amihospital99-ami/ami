@@ -74,7 +74,6 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenBooking={() => setIsBookingOpen(true)}
-        onOpenSupabase={() => setIsSupabaseOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
 

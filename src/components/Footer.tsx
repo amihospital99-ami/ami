@@ -1,6 +1,6 @@
 import React from 'react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
-import { Phone, Mail, MapPin, ShieldCheck, Heart, Database } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Heart } from 'lucide-react';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -11,7 +11,6 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenBooking,
-  onOpenSupabase,
   onOpenAdmin,
 }) => {
   return (
@@ -152,18 +151,6 @@ export const Footer: React.FC<FooterProps> = ({
                 >
                   <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
                   <span>Admin Sign-up / Login</span>
-                </button>
-                <span>•</span>
-              </>
-            )}
-            {onOpenSupabase && (
-              <>
-                <button
-                  onClick={onOpenSupabase}
-                  className="hover:text-emerald-400 transition font-bold flex items-center gap-1 cursor-pointer"
-                >
-                  <Database className="w-3 h-3 text-emerald-400" />
-                  <span>Supabase Backend</span>
                 </button>
                 <span>•</span>
               </>
