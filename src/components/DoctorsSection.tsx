@@ -1,6 +1,7 @@
 import React from 'react';
 import { DOCTORS } from '../data/hospitalData';
-import { Award, CheckCircle2, Calendar, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { Award, CheckCircle2, Calendar, ShieldCheck, HeartHandshake, MessageSquare } from 'lucide-react';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 interface DoctorsSectionProps {
   onOpenBooking: () => void;
@@ -112,17 +113,33 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({ onOpenBooking })
                     <span>OPD Hours:</span>
                     <span className="font-semibold text-slate-700">{doc.availability}</span>
                   </div>
-                  <button
-                    onClick={onOpenBooking}
-                    className={`w-full py-2.5 rounded-xl text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
-                      isFemaleSpecialist
-                        ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20'
-                        : 'bg-teal-600 hover:bg-teal-700 shadow-teal-600/20'
-                    }`}
-                  >
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>Book Appointment with {doc.name.split(' ')[1]}</span>
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <button
+                      onClick={onOpenBooking}
+                      className={`py-2 px-3 rounded-xl text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
+                        isFemaleSpecialist
+                          ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20'
+                          : 'bg-teal-600 hover:bg-teal-700 shadow-teal-600/20'
+                      }`}
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>Book Slot</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openWhatsApp(
+                          isFemaleSpecialist
+                            ? WHATSAPP_MESSAGES.ladyDoctorConsult()
+                            : WHATSAPP_MESSAGES.generalInquiry(`consultation with ${doc.name}`)
+                        )
+                      }
+                      className="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -142,12 +159,21 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({ onOpenBooking })
               We understand that conditions like piles and fissures can feel uncomfortable to discuss. Dr. Sneha Patel and our female nurses ensure utmost dignity, confidentiality, and empathy.
             </p>
           </div>
-          <button
-            onClick={onOpenBooking}
-            className="px-6 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-rose-600/25 transition shrink-0 cursor-pointer active:scale-95"
-          >
-            Consult Lady Doctor
-          </button>
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            <button
+              onClick={onOpenBooking}
+              className="px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-rose-600/25 transition cursor-pointer active:scale-95"
+            >
+              Consult Lady Doctor
+            </button>
+            <button
+              onClick={() => openWhatsApp(WHATSAPP_MESSAGES.ladyDoctorConsult())}
+              className="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/25 transition flex items-center gap-1.5 cursor-pointer active:scale-95"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>WhatsApp Lady Doctor</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

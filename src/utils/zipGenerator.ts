@@ -133,6 +133,9 @@ npx wrangler pages deploy . --project-name=ami-hospital
         <a href="#faq" class="hover:text-teal-600 transition">FAQ</a>
       </nav>
       <div class="flex items-center gap-3">
+        <a href="https://wa.me/919876543210?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20laser%20piles%20treatment." target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition">
+          💬 WhatsApp Doctor
+        </a>
         <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50 transition">
           📞 Call Doctor
         </a>
@@ -698,6 +701,14 @@ npx wrangler pages deploy . --project-name=ami-hospital
       document.getElementById('ins-msg').classList.remove('hidden');
     }
   </script>
+
+  <!-- Floating WhatsApp Chat Widget -->
+  <div class="fixed bottom-6 left-6 z-50">
+    <a href="https://wa.me/919876543210?text=Hello%20Ami%20Hospital,%20I%20have%20an%20inquiry%20about%20painless%20piles%20laser%20treatment." target="_blank" class="flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3.5 rounded-full shadow-2xl transition transform hover:scale-105 active:scale-95 font-bold text-xs border-2 border-white/80">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-200 animate-ping"></span>
+      <span>💬 WhatsApp Doctor (Online)</span>
+    </a>
+  </div>
 </body>
 </html>`;
 

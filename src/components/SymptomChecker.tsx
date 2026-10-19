@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, HelpCircle, MessageSquare } from 'lucide-react';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 interface SymptomCheckerProps {
   onOpenBooking: () => void;
@@ -290,6 +291,24 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onOpenBooking })
                 >
                   <span>Book Free Consultation For This</span>
                   <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    openWhatsApp(
+                      WHATSAPP_MESSAGES.symptomCheck({
+                        assessment: recommendation.title,
+                        bleeding,
+                        pain,
+                        prolapse,
+                        duration,
+                      })
+                    )
+                  }
+                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Send Symptoms to Doctor on WhatsApp</span>
                 </button>
                 <p className="text-[10px] text-slate-400 text-center flex items-center justify-center gap-1">
                   <ShieldCheck className="w-3 h-3 text-teal-600" />

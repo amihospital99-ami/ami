@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Calendar, Clock, Phone, User, CheckCircle2, MessageSquare, Shield, HeartHandshake } from 'lucide-react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -34,20 +35,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   const handleWhatsAppRedirect = () => {
-    const message = `Hello Ami Hospital, I booked an appointment.
-Ref ID: ${refId}
-Patient: ${name}
-Phone: ${phone}
-Condition: ${condition}
-Branch: ${branch}
-Preferred Slot: ${preferredSlot} ${preferredDate ? 'on ' + preferredDate : ''}
-Lady Doctor Preferred: ${femaleDoctor ? 'Yes (Dr. Sneha Patel)' : 'No / Any Specialist'}
-Please confirm my slot.`;
-
-    const url = `https://wa.me/${HOSPITAL_INFO.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, '_blank');
+    const message = WHATSAPP_MESSAGES.bookAppointment({
+      name,
+      phone,
+      condition,
+      branch,
+      date: preferredDate,
+      time: preferredSlot,
+      ladyDoctor: femaleDoctor,
+      refId,
+    });
+    openWhatsApp(message);
   };
 
   const handleReset = () => {

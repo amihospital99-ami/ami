@@ -16,8 +16,10 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { CloudflareModal } from './components/CloudflareModal';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Phone, MessageSquare, Calendar, Download } from 'lucide-react';
 import { HOSPITAL_INFO } from './data/hospitalData';
+import { openWhatsApp, WHATSAPP_MESSAGES } from './utils/whatsapp';
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -85,6 +87,9 @@ export default function App() {
         onClose={() => setIsCloudflareOpen(false)}
       />
 
+      {/* Floating Interactive WhatsApp Chat Widget */}
+      <WhatsAppWidget />
+
       {/* Sticky Mobile Floating Action Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 p-2.5 flex items-center justify-between gap-2 shadow-lg">
         <a
@@ -94,18 +99,16 @@ export default function App() {
           <Phone className="w-3.5 h-3.5 text-teal-600" />
           <span>Call Doctor</span>
         </a>
-        <a
-          href={`https://wa.me/${HOSPITAL_INFO.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hi%20Ami%20Hospital,%20I%20would%20like%20to%20consult%20a%20doctor.`}
-          target="_blank"
-          rel="noreferrer"
-          className="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs"
+        <button
+          onClick={() => openWhatsApp(WHATSAPP_MESSAGES.generalInquiry())}
+          className="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs cursor-pointer active:scale-95"
         >
           <MessageSquare className="w-3.5 h-3.5" />
           <span>WhatsApp</span>
-        </a>
+        </button>
         <button
           onClick={() => setIsBookingOpen(true)}
-          className="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs"
+          className="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs cursor-pointer active:scale-95"
         >
           <Calendar className="w-3.5 h-3.5" />
           <span>Book Free</span>

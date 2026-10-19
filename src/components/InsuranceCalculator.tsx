@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { INSURANCE_PARTNERS } from '../data/hospitalData';
-import { ShieldCheck, CreditCard, Check, Calculator, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, CreditCard, Check, Calculator, ArrowRight, Zap, CheckCircle2, MessageSquare } from 'lucide-react';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 interface InsuranceCalculatorProps {
   onOpenBooking: () => void;
@@ -104,13 +105,42 @@ export const InsuranceCalculator: React.FC<InsuranceCalculatorProps> = ({ onOpen
                   >
                     Check Coverage
                   </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openWhatsApp(
+                        WHATSAPP_MESSAGES.insuranceCheck(
+                          insPolicy || 'Private Mediclaim',
+                          insPhone || 'Patient Phone'
+                        )
+                      )
+                    }
+                    className="sm:col-span-3 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>Send Insurance Policy on WhatsApp for Instant Approval</span>
+                  </button>
                 </form>
               ) : (
-                <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-semibold flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>
-                    Request received for {insPolicy}! Our TPA coordinator will verify cashless terms and call you on {insPhone}.
-                  </span>
+                <div className="space-y-2">
+                  <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>
+                      Request received for {insPolicy}! Our TPA coordinator is verifying your cashless terms.
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openWhatsApp(
+                        WHATSAPP_MESSAGES.insuranceCheck(insPolicy, insPhone)
+                      )
+                    }
+                    className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>Connect with TPA Coordinator on WhatsApp Now</span>
+                  </button>
                 </div>
               )}
             </div>

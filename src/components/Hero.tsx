@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Clock, Zap, CheckCircle, ArrowRight, MessageSquare, PhoneCall, Award, UserCheck } from 'lucide-react';
 import { HOSPITAL_INFO } from '../data/hospitalData';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -18,9 +19,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
     e.preventDefault();
     setFormSubmitted(true);
     setTimeout(() => {
-      const msg = `Hi Ami Hospital, I need a consultation for ${quickCondition}. Name: ${quickName}, Phone: ${quickPhone}. ${ladyDoctor ? 'Prefer Lady Doctor.' : ''}`;
-      window.open(`https://wa.me/${HOSPITAL_INFO.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(msg)}`, '_blank');
-    }, 1200);
+      const msg = WHATSAPP_MESSAGES.bookAppointment({
+        name: quickName,
+        phone: quickPhone,
+        condition: quickCondition,
+        ladyDoctor,
+      });
+      openWhatsApp(msg);
+    }, 1000);
   };
 
   return (
@@ -116,15 +122,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <a
-                href={`https://wa.me/${HOSPITAL_INFO.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hi%20Ami%20Hospital,%20I%20would%20like%20to%20know%20about%20painless%20piles%20laser%20treatment.`}
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition flex items-center gap-2"
+              <button
+                onClick={() => openWhatsApp(WHATSAPP_MESSAGES.generalInquiry())}
+                className="px-5 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition flex items-center gap-2 cursor-pointer active:scale-95"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp Doctor</span>
-              </a>
+              </button>
 
               <a
                 href={`tel:${HOSPITAL_INFO.phone}`}
