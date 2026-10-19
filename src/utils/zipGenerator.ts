@@ -628,9 +628,9 @@ npx wrangler pages deploy . --project-name=ami-hospital
             Super Speciality Laser Proctology Center. Committed to painless, modern, and permanent solutions for anorectal disorders.
           </p>
           <div class="mt-4 text-xs text-slate-300 space-y-1">
-            <p>📍 Plot 42, Health City Avenue, Sector 12</p>
+            <p>📍 Near Bus Station, Padra Road, Samiyala, Vadodara. 391410</p>
             <p>📞 Helpline: +91 82384 11909</p>
-            <p>✉️ care@amihospital.com</p>
+            <p>✉️ amihospital99@gmail.com</p>
           </div>
         </div>
         <div>

@@ -70,7 +70,11 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-                <span>{HOSPITAL_INFO.email}</span>
+                <span>
+                  <a href={`mailto:${HOSPITAL_INFO.email}`} className="hover:text-teal-400 transition">
+                    {HOSPITAL_INFO.email}
+                  </a>
+                </span>
               </div>
             </div>
           </div>
