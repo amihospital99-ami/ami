@@ -4,7 +4,6 @@ import {
   X,
   Send,
   CheckCheck,
-  Settings,
   Phone,
   ShieldCheck,
   Sparkles,
@@ -13,7 +12,6 @@ import {
 } from 'lucide-react';
 import {
   getWhatsAppNumber,
-  saveWhatsAppNumber,
   openWhatsApp,
   cleanPhoneNumber,
   WHATSAPP_MESSAGES,
@@ -22,15 +20,11 @@ import {
 export const WhatsAppWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [customNumber, setCustomNumber] = useState('');
-  const [showConfig, setShowConfig] = useState(false);
-  const [savedNotice, setSavedNotice] = useState(false);
   const [currentNumber, setCurrentNumber] = useState('');
 
   useEffect(() => {
     const num = getWhatsAppNumber();
     setCurrentNumber(num);
-    setCustomNumber(num);
   }, []);
 
   const handleSendMessage = (textToSend?: string) => {
@@ -38,19 +32,6 @@ export const WhatsAppWidget: React.FC = () => {
     openWhatsApp(msg, currentNumber);
     setIsOpen(false);
     setMessage('');
-  };
-
-  const handleSaveNumber = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (customNumber.trim()) {
-      saveWhatsAppNumber(customNumber.trim());
-      setCurrentNumber(customNumber.trim());
-      setSavedNotice(true);
-      setTimeout(() => {
-        setSavedNotice(false);
-        setShowConfig(false);
-      }, 1500);
-    }
   };
 
   const quickChips = [
@@ -135,63 +116,14 @@ export const WhatsAppWidget: React.FC = () => {
 
             <div className="flex items-center gap-1">
               <button
-                onClick={() => setShowConfig(!showConfig)}
-                title="Configure WhatsApp Number"
-                className="p-1.5 rounded-lg bg-emerald-700/60 hover:bg-emerald-700 text-emerald-100 transition"
-              >
-                <Settings className="w-4 h-4" />
-              </button>
-              <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg bg-emerald-700/60 hover:bg-emerald-700 text-white transition"
+                className="p-1.5 rounded-lg bg-emerald-700/60 hover:bg-emerald-700 text-white transition cursor-pointer"
+                aria-label="Close chat"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
           </div>
-
-          {/* Number Config Drawer */}
-          {showConfig ? (
-            <div className="p-4 bg-slate-50 border-b border-slate-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-800">
-                  Hospital WhatsApp Number:
-                </span>
-                <span className="text-[10px] text-slate-500 font-mono">
-                  Current: {currentNumber}
-                </span>
-              </div>
-              <form onSubmit={handleSaveNumber} className="space-y-2">
-                <input
-                  type="text"
-                  value={customNumber}
-                  onChange={(e) => setCustomNumber(e.target.value)}
-                  placeholder="e.g. +91 82384 11909"
-                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
-                />
-                <div className="flex items-center gap-2">
-                  <button
-                    type="submit"
-                    className="flex-1 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition"
-                  >
-                    Save Number
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setShowConfig(false)}
-                    className="py-1.5 px-3 rounded-lg bg-slate-200 text-slate-700 text-xs font-semibold"
-                  >
-                    Cancel
-                  </button>
-                </div>
-                {savedNotice && (
-                  <p className="text-[11px] text-emerald-600 font-bold text-center">
-                    ✓ WhatsApp number updated!
-                  </p>
-                )}
-              </form>
-            </div>
-          ) : null}
 
           {/* Chat Body */}
           <div className="p-4 bg-[#EFEAE2] min-h-[200px] max-h-[300px] overflow-y-auto space-y-3">

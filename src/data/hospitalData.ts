@@ -199,18 +199,18 @@ export const COMPARISON_DATA = [
 
 export const DOCTORS: Doctor[] = [
   {
-    name: 'Dr. Amit R. Sharma',
-    role: 'Chief Proctologist & Medical Director',
+    name: 'Dr. Tanmesh Patel',
+    role: 'Proctologist & Medical Director',
     qualification: 'MBBS, MS (General Surgery), FIAGES, FALS (Proctology)',
     experience: '18+ Years Experience',
     surgeriesCount: '10,000+ Laser Procedures',
     specialty: ['Laser Hemorrhoidoplasty', 'Complex FiLaC Fistula Repair', 'Laparoscopy'],
-    languages: ['English', 'Hindi', 'Gujarati', 'Marathi'],
+    languages: ['English', 'Hindi', 'Gujarati', 'English'],
     bio: 'Pioneer in laser proctology in Western India. Trained in Germany and Italy for advanced diode laser techniques. Former Senior Consultant at top tertiary hospitals.',
-    availability: 'Mon - Sat (9:00 AM - 6:00 PM)',
+    availability: 'Mon - Sat (9:00 AM - 8:00 PM)',
   },
   {
-    name: 'Dr. Sneha Patel',
+    name: 'Dr. Urvashi Patel',
     role: 'Senior Female Proctologist & Colorectal Surgeon',
     qualification: 'MBBS, DNB (Surgery), Fellowship in Laser Proctology',
     experience: '14+ Years Experience',
@@ -219,17 +219,6 @@ export const DOCTORS: Doctor[] = [
     languages: ['English', 'Hindi', 'Gujarati'],
     bio: 'Dedicated to providing compassionate, 100% private, and empathetic treatment for female patients facing post-pregnancy hemorrhoids and chronic anorectal disorders.',
     availability: 'Tue - Sun (10:00 AM - 7:00 PM)',
-  },
-  {
-    name: 'Dr. Rajesh K. Mehta',
-    role: 'Senior Consultant Anesthesiologist & Critical Care',
-    qualification: 'MBBS, MD (Anesthesia), Fellowship in Day-Care Sedation',
-    experience: '16+ Years Experience',
-    surgeriesCount: '15,000+ Sedations',
-    specialty: ['Painless Local/Regional Block', 'Short Daycare Sedation', 'Senior Citizen Safety'],
-    languages: ['English', 'Hindi'],
-    bio: 'Expert in ultra-safe short-acting sedation protocols that allow patients to wake up refreshed within 15 minutes with zero nausea or dizziness.',
-    availability: 'On-Call 24x7 for All Surgeries',
   },
 ];
 
@@ -322,7 +311,7 @@ export const FAQ_LIST: FaqItem[] = [
     category: 'general',
     question: 'Can female patients consult a lady doctor at Ami Hospital?',
     answer:
-      'Absolutely. We have Dr. Sneha Patel and an exclusive, all-female clinical care team ensuring 100% privacy, dignity, and comfort for our female patients.',
+      'Absolutely. We have Dr. Urvashi Patel and an exclusive, all-female clinical care team ensuring 100% privacy, dignity, and comfort for our female patients.',
   },
   {
     category: 'general',
