@@ -21,9 +21,13 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800 text-xs">
           {/* Col 1: About Ami Hospital */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-teal-600 flex items-center justify-center text-white font-extrabold text-lg">
-                +
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl overflow-hidden bg-white flex items-center justify-center p-0.5 shadow-sm shrink-0">
+                <img
+                  src="/assets/aistudio/Ami_Hospital_Logo_76550ad2.png"
+                  alt="Ami Hospital Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-black tracking-tight text-white">
                 AMI <span className="text-teal-400">HOSPITAL</span>

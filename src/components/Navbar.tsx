@@ -47,8 +47,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-600 via-teal-500 to-cyan-500 flex items-center justify-center text-white font-extrabold text-2xl shadow-md shadow-teal-600/20 group-hover:scale-105 transition">
-              <span className="leading-none text-white font-serif">+</span>
+            <div className="w-12 h-12 rounded-2xl overflow-hidden bg-white shadow-md shadow-slate-200/90 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 p-0.5 border border-slate-200/80">
+              <img
+                src="/assets/aistudio/Ami_Hospital_Logo_76550ad2.png"
+                alt="Ami Hospital Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">

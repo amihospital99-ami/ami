@@ -97,8 +97,12 @@ export const WhatsAppWidget: React.FC = () => {
           <div className="bg-emerald-600 p-4 text-white flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-white text-emerald-700 font-black flex items-center justify-center text-lg border-2 border-emerald-300">
-                  +
+                <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center p-0.5 border-2 border-emerald-300">
+                  <img
+                    src="/assets/aistudio/Ami_Hospital_Logo_76550ad2.png"
+                    alt="Ami Hospital"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-emerald-600 rounded-full"></span>
               </div>
