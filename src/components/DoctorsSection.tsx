@@ -28,7 +28,10 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({ onOpenBooking })
         {/* Doctor Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {DOCTORS.map((doc, idx) => {
-            const isFemaleSpecialist = doc.name.includes('Sneha');
+            const isFemaleSpecialist =
+              doc.name.includes('Sneha') ||
+              doc.name.includes('Urvashi') ||
+              doc.role.toLowerCase().includes('female');
             return (
               <div
                 key={idx}

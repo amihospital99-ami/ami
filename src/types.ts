@@ -15,7 +15,7 @@ export interface Treatment {
 export interface Doctor {
   name: string;
   role: string;
-  qualification: string;
+  qualification?: string;
   experience: string;
   surgeriesCount: string;
   specialty: string[];

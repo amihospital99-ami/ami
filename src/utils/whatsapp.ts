@@ -56,9 +56,9 @@ export const WHATSAPP_MESSAGES = {
 ${details.refId ? `🆔 Reference ID: ${details.refId}\n` : ''}👤 Patient: ${details.name}
 📱 Phone: ${details.phone}
 🏥 Condition: ${details.condition}
-📍 Branch: ${details.branch || 'Main Center (Sector 12)'}
+📍 Branch: ${details.branch || 'Padra Road, Samiyala, Vadodara'}
 📅 Preferred Slot: ${details.time || 'Morning'} ${details.date ? 'on ' + details.date : ''}
-👩‍⚕️ Lady Doctor: ${details.ladyDoctor ? 'Yes, prefer Dr. Sneha Patel' : 'Any Senior Proctologist'}
+👩‍⚕️ Lady Doctor: ${details.ladyDoctor ? 'Yes, prefer Dr. Urvashi Patel' : 'Any Senior Proctologist'}
 
 Please confirm the appointment slot and send hospital directions.`,
 
@@ -87,6 +87,6 @@ I would like to check cashless insurance eligibility for laser piles surgery.
 Please let me know if 100% cashless approval is possible and what documents are required.`,
 
   ladyDoctorConsult: () =>
-    `Hello Dr. Sneha Patel & Team at Ami Hospital,
-I am a female patient seeking a private consultation for anorectal / piles discomfort. Please let me know when Dr. Sneha Patel is available at the clinic for a confidential checkup.`,
+    `Hello Dr. Urvashi Patel & Team at Ami Hospital,
+I am a female patient seeking a private consultation for anorectal / piles discomfort. Please let me know when Dr. Urvashi Patel is available at the clinic for a confidential checkup.`,
 };

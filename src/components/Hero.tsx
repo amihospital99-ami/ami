@@ -160,7 +160,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               {/* Highlight ribbon */}
               <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
                 <Award className="w-3.5 h-3.5" />
-                <span>Free 1st Consultation</span>
+                <span>Instant Doctor Callback</span>
               </div>
 
               <div className="border-b border-slate-100 pb-4 mb-5">
